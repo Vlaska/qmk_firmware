@@ -18,7 +18,6 @@ RGBLIGHT_ENABLE = yes      # Enable keyboard RGB underglow
 AUTO_SHIFT_ENABLE = no
 KEY_LOCK_ENABLE = no
 DEBOUNCE_TYPE = asym_eager_defer_pk
-SWAP_HANDS_ENABLE = no
 TAP_DANCE_ENABLE = yes
 LEADER_ENABLE = yes
 CAPS_WORD_ENABLE = yes
