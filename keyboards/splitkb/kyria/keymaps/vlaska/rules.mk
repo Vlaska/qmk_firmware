@@ -4,6 +4,8 @@ MOUSEKEY_ENABLE = no
 CONSOLE_ENABLE = no
 ENCODER_ENABLE = no       # Enables the use of one or more encoders
 MUSIC_ENABLE = no
+UNICODE_ENABLE = no
+SWAP_HANDS_ENABLE = no
 
 # Screen
 OLED_ENABLE = yes
@@ -19,6 +21,8 @@ DEBOUNCE_TYPE = asym_eager_defer_pk
 SWAP_HANDS_ENABLE = no
 TAP_DANCE_ENABLE = yes
 LEADER_ENABLE = yes
+CAPS_WORD_ENABLE = yes
+COMBO_ENABLE = yes
 
 SRC += vlaska.c
 

@@ -7,7 +7,7 @@
         "**/.build": true,
         "**/*.hex": true,
         "**/*.bin": true,
-        "**/*.uf2": true
+        "**/*.uf2": true,
     },
     "files.associations": {
         "*.h": "c",
@@ -24,11 +24,12 @@
         "editor.trimAutoWhitespace": false,
         "files.trimTrailingWhitespace": false
     },
-    "python.formatting.provider": "yapf",
     "[json]": {
-        "editor.formatOnSave": false
+	    "editor.formatOnSave": false
     },
-    "clangd.arguments": [
-        "--header-insertion=never"
-    ]
+    "C_Cpp.autocompleteAddParentheses": true,
+    "C_Cpp.default.browse.databaseFilename": "${default}",
+    "C_Cpp.intelliSenseEngineFallback": "Enabled",
+    "C_Cpp.errorSquiggles": "Disabled",
+    "cmake.configureOnOpen": false
 }
