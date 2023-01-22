@@ -21,10 +21,21 @@ DEBOUNCE_TYPE = asym_eager_defer_pk
 TAP_DANCE_ENABLE = yes
 LEADER_ENABLE = yes
 CAPS_WORD_ENABLE = yes
-COMBO_ENABLE = yes
+
+# Can't use, too much to handle
+COMBO_ENABLE = no
+DYNAMIC_MACRO_ENABLE = no
 
 SRC += vlaska.c
 
 ifeq ($(strip $(TAP_DANCE_ENABLE)), yes)
     SRC += tapdances.c
+endif
+
+ifeq ($(strip $(COMBO_ENABLE)), yes)
+    SRC += combos.c
+endif
+
+ifeq ($(strip $(LEADER_ENABLE)), yes)
+    SRC += leader.c
 endif

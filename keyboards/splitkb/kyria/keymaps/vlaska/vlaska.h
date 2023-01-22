@@ -1,15 +1,23 @@
 #pragma once
 #include QMK_KEYBOARD_H
+#include "layers.h"
 
 #ifdef TAP_DANCE_ENABLE
-#include "tapdances.h"
+#    include "tapdances.h"
 #endif
 
-enum keyboard_layers {
-    _BASE = 0,
-    _NUM,
-    _NUMPAD,
-    _NAV,
-    _FUNC,
-    _GAME,
-};
+#ifdef LEADER_ENABLE
+#include "leader.h"
+#endif
+
+#ifdef COMBO_ENABLE
+#    include "combos.h"
+#endif
+
+#ifdef TAP_DANCE_ENABLE
+#    define COLON TD_COLON
+#    define QUOTE TD_QUOTE
+#else
+#    define COLON KC_SCLN
+#    define QUOTE KC_QUOTE
+#endif

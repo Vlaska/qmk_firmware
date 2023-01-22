@@ -1,41 +1,46 @@
 #include "tapdances.h"
 
-void generic_swapable_tap_dance_finished(qk_tap_dance_state_t *state, void *user_data, uint16_t swapped_key, uint16_t unswapped_key, bool swap) {
-    if (state->count == 1 && swap) {
-        register_code16(swapped_key);
-    } else {
-        register_code16(unswapped_key);
-    }
-}
-
-void generic_swapable_tap_dance_reset(qk_tap_dance_state_t *state, void *user_data, uint16_t swapped_key, uint16_t unswapped_key, bool swap) {
-    if (state->count == 1 && swap) {
-        unregister_code16(swapped_key);
-    } else {
-        unregister_code16(unswapped_key);
-    }
-}
-
-bool SWAP_COLN_SEMICOLN = true;
-bool SWAP_QUOTES = false;
-
-void dance_cln_finished(qk_tap_dance_state_t *state, void *user_data) {
-    generic_swapable_tap_dance_finished(state, user_data, KC_COLON, KC_SEMICOLON, SWAP_COLN_SEMICOLN);
-}
-
-void dance_cln_reset(qk_tap_dance_state_t *state, void *user_data) {
-    generic_swapable_tap_dance_reset(state, user_data, KC_COLON, KC_SEMICOLON, SWAP_COLN_SEMICOLN);
-}
-
-void dance_quote_finished(qk_tap_dance_state_t *state, void *user_data) {
-    generic_swapable_tap_dance_finished(state, user_data, KC_DOUBLE_QUOTE, KC_QUOTE, SWAP_QUOTES);
-}
-
-void dance_quote_reset(qk_tap_dance_state_t *state, void *user_data) {
-    generic_swapable_tap_dance_reset(state, user_data, KC_DOUBLE_QUOTE, KC_QUOTE, SWAP_QUOTES);
-}
+tap_dance_tap_hold_t colon_tap_dance = {KC_COLN, KC_SCLN, KC_NO};
+tap_dance_tap_hold_t quote_tap_dance = {KC_QUOTE, KC_DOUBLE_QUOTE, KC_NO};
 
 qk_tap_dance_action_t tap_dance_actions[] = {
-    [CT_CLN] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, dance_cln_finished, dance_cln_reset),
-    [CT_QUOTE] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, dance_quote_finished, dance_cln_reset),
+    [CT_CLN] = ACTION_TAP_DANCE_TAP_HOLD(colon_tap_dance),
+    [CT_QUOTE] = ACTION_TAP_DANCE_TAP_HOLD(quote_tap_dance),
 };
+
+void tap_dance_tap_hold_finished(qk_tap_dance_state_t *state, void *user_data) {
+    tap_dance_tap_hold_t *tap_hold = (tap_dance_tap_hold_t *)user_data;
+    uint16_t key;
+
+    if (state->pressed) {
+
+        if (state->count == 1
+#ifndef PERMISSIVE_HOLD
+            && !state->interrupted
+#endif
+        ) {
+            key = tap_hold->hold;
+        } else {
+            key = tap_hold->tap;
+        }
+
+        register_code16(key);
+        tap_hold->held = key;
+    }
+}
+
+void tap_dance_tap_hold_reset(qk_tap_dance_state_t *state, void *user_data) {
+    tap_dance_tap_hold_t *tap_hold = (tap_dance_tap_hold_t *)user_data;
+
+    if (tap_hold->held) {
+        unregister_code16(tap_hold->held);
+        tap_hold->held = 0;
+    }
+}
+
+void swap_tap_dance_tap_hold(void *dance_) {
+    tap_dance_tap_hold_t* dance = (tap_dance_tap_hold_t *)dance_;
+    uint16_t tmp = dance->tap;
+    dance->tap = dance->hold;
+    dance->hold = tmp;
+}
