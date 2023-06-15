@@ -6,7 +6,7 @@ bool is_macro_recording_in_progress = false;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     #ifdef TAP_DANCE_ENABLE
-    qk_tap_dance_action_t *action;
+    tap_dance_action_t *action;
     #endif
 
     switch (keycode) {
@@ -122,38 +122,5 @@ void dynamic_macro_record_start_user(void) {
 
 void dynamic_macro_record_end_user(int8_t direction) {
     is_macro_recording_in_progress = false;
-}
-#endif
-
-#ifdef LEADER_ENABLE
-LEADER_EXTERNS();
-
-void matrix_scan_user(void) {
-    LEADER_DICTIONARY() {
-        leading = false;
-#    ifdef TAP_DANCE_ENABLE
-        // SEQ_ONE_KEY(TD_COLON) {
-        SEQ_TWO_KEYS(KC_D, KC_S) {
-            swap_tap_dance_tap_hold(tap_dance_actions[CT_CLN].user_data);
-        } else
-        // SEQ_ONE_KEY(TD_QUOTE) {
-        SEQ_TWO_KEYS(KC_D, KC_Q) {
-            swap_tap_dance_tap_hold(tap_dance_actions[CT_QUOTE].user_data);
-        }
-        SEQ_ONE_KEY(KC_A) {
-            SEND_STRING("->");
-        }
-#endif
-        SEQ_ONE_KEY(KC_R) {
-            register_code(KC_LGUI);
-            register_code(KC_LEFT_CTRL);
-            register_code(KC_T);
-
-            unregister_code(KC_T);
-            unregister_code(KC_LEFT_CTRL);
-            unregister_code(KC_LGUI);
-        }
-        leader_end();
-    }
 }
 #endif

@@ -3,12 +3,12 @@
 tap_dance_tap_hold_t colon_tap_dance = {KC_COLN, KC_SCLN, KC_NO};
 tap_dance_tap_hold_t quote_tap_dance = {KC_QUOTE, KC_DOUBLE_QUOTE, KC_NO};
 
-qk_tap_dance_action_t tap_dance_actions[] = {
+tap_dance_action_t tap_dance_actions[] = {
     [CT_CLN] = ACTION_TAP_DANCE_TAP_HOLD(colon_tap_dance),
     [CT_QUOTE] = ACTION_TAP_DANCE_TAP_HOLD(quote_tap_dance),
 };
 
-void tap_dance_tap_hold_finished(qk_tap_dance_state_t *state, void *user_data) {
+void tap_dance_tap_hold_finished(tap_dance_state_t *state, void *user_data) {
     tap_dance_tap_hold_t *tap_hold = (tap_dance_tap_hold_t *)user_data;
     uint16_t key;
 
@@ -29,7 +29,7 @@ void tap_dance_tap_hold_finished(qk_tap_dance_state_t *state, void *user_data) {
     }
 }
 
-void tap_dance_tap_hold_reset(qk_tap_dance_state_t *state, void *user_data) {
+void tap_dance_tap_hold_reset(tap_dance_state_t *state, void *user_data) {
     tap_dance_tap_hold_t *tap_hold = (tap_dance_tap_hold_t *)user_data;
 
     if (tap_hold->held) {

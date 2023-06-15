@@ -28,9 +28,6 @@
 #define RGBLIGHT_SLEEP
 #define RGBLIGHT_DEFAULT_HUE 127
 
-// Lets you roll mod-tap keys
-#define IGNORE_MOD_TAP_INTERRUPT
-
 // Tap once for keys requiring multiple taps to do smth
 #define TAPPING_TOGGLE 1
 

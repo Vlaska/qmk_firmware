@@ -23,8 +23,8 @@ typedef struct {
 tap_dance_tap_hold_t colon_tap_dance;
 tap_dance_tap_hold_t quote_tap_dance;
 
-void tap_dance_tap_hold_finished(qk_tap_dance_state_t *state, void *user_data);
-void tap_dance_tap_hold_reset(qk_tap_dance_state_t *state, void *user_data);
+void tap_dance_tap_hold_finished(tap_dance_state_t *state, void *user_data);
+void tap_dance_tap_hold_reset(tap_dance_state_t *state, void *user_data);
 
 #define ACTION_TAP_DANCE_TAP_HOLD(tap_hold) \
     { .fn = {NULL, tap_dance_tap_hold_finished, tap_dance_tap_hold_reset}, .user_data = (void *)(&tap_hold), }

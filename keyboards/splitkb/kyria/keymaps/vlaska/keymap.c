@@ -62,7 +62,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      KC_TAB  , KC_Q ,  KC_W   ,  KC_E  ,   KC_R ,   KC_T ,                                        KC_Y,    KC_U ,  KC_I ,   KC_O ,  KC_P ,   KC_BSPC,
      KC_LSFT , KC_A ,  KC_S   ,  KC_D  ,   KC_F ,   KC_G ,                                        KC_H,    KC_J ,  KC_K ,   KC_L ,  COLON,   QUOTE,
      QK_GESC , KC_Z ,  KC_X   ,  KC_C  ,   KC_V ,   KC_B , KC_LBRC, PRN_SCR,     FKEYS ,KC_RBRC,  KC_N,    KC_M ,  KC_COMM, KC_DOT, KC_SLSH, KC_BSLS,
-                                KC_LALT, KC_LGUI, KC_LCTL, KC_SPC , NAV   ,      NUM   ,KC_SFTENT,KC_RALT, KC_LSFT,QK_LEAD
+                                KC_LALT, KC_LGUI, KC_LCTL, KC_SPC , NAV    ,     NUM   ,SC_SENT,  KC_RALT, KC_LSFT,QK_LEAD
     ),
 
 /*
@@ -102,15 +102,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |        |   [  |   ]  |   _  |   !  |   ?  |      |      |  |      |      |   :  | 1  ! | 2  @ | 3  # |   *  |    /   |
  * |        |      |      |      |      |      |      |      |  |      |      |      |      |      |      |      |        |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
- *                        |      |      |      |      |      |  |      |      | 0  ) |   .  |   ,  |
- *                        |      |      |      |      |      |  |      |      |      |      |      |
+ *                        |      |      | Left |      |      |  |      |      | 0  ) |   .  |   ,  |
+ *                        |      |      | Shift|      |      |  |      |      |      |      |      |
  *                        `----------------------------------'  `----------------------------------'
  */
     [_NUM] = LAYOUT(
       KC_GRV,  KC_LCBR, KC_RCBR, KC_AMPR, KC_PIPE, KC_HASH,                                     KC_LPRN, KC_7, KC_8, KC_9, KC_EQL,  _______,
       _______, KC_LT,   KC_GT,   KC_EQL,  KC_TILD, KC_PMNS,                                     KC_RPRN, KC_4, KC_5, KC_6, KC_PPLS, KC_PMNS,
       _______, KC_LBRC, KC_RBRC, KC_UNDS, KC_EXLM, KC_QUES, _______, _______, _______, _______, KC_COLN, KC_1, KC_2, KC_3, KC_PAST, KC_PSLS,
-                                 _______, _______, _______, _______, _______, _______, _______, KC_0,    KC_DOT,  KC_COMM
+                                 _______, _______, KC_LSFT, _______, _______, _______, _______, KC_0,    KC_DOT,  KC_COMM
     ),
 /*
  * Func layer

@@ -29,8 +29,8 @@
     },
     "C_Cpp.autocompleteAddParentheses": true,
     "C_Cpp.default.browse.databaseFilename": "${default}",
-    "C_Cpp.intelliSenseEngineFallback": "Enabled",
-    "C_Cpp.errorSquiggles": "Disabled",
+    "C_Cpp.intelliSenseEngineFallback": "enabled",
+    "C_Cpp.errorSquiggles": "disabled",
     "cmake.configureOnOpen": false,
     "C_Cpp.dimInactiveRegions": true,
     "cmake.sourceDirectory": "${workspaceFolder}/lib/googletest"
