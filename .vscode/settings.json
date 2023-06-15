@@ -31,5 +31,7 @@
     "C_Cpp.default.browse.databaseFilename": "${default}",
     "C_Cpp.intelliSenseEngineFallback": "Enabled",
     "C_Cpp.errorSquiggles": "Disabled",
-    "cmake.configureOnOpen": false
+    "cmake.configureOnOpen": false,
+    "C_Cpp.dimInactiveRegions": true,
+    "cmake.sourceDirectory": "${workspaceFolder}/lib/googletest"
 }
